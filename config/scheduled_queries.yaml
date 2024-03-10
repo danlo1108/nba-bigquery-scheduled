@@ -1,0 +1,23 @@
+scheduled_queries:
+  - name: "Player Stats Agg Scheduled Query"
+    description: "Calculate player stats"
+    schedule: "every 15 minutes" 
+    startTime: 
+    endTime:
+    queryFilePath: "sql/player_stats_agg.sql"
+    destinationDataset: "nba_scheduled"
+    destinationTable: "player_stats_agg"
+    writeDisposition: "WRITE_TRUNCATE" # Options: WRITE_TRUNCATE, WRITE_APPEND, WRITE_EMPTY
+    partitioningField: ""
+
+
+  - name: "Team Stats Agg (Stupid) Scheduled Query"
+    description: "Calculate team stats"
+    schedule: "every 15 minutes"  
+    startTime: 
+    endTime:
+    queryFilePath: "sql/team_stats_agg_stupid.sql"
+    destinationDataset: "nba_scheduled"
+    destinationTable: "team_stats_agg_stupid"
+    writeDisposition: "WRITE_TRUNCATE" # Options: WRITE_TRUNCATE, WRITE_APPEND, WRITE_EMPTY
+    partitioningField: ""
