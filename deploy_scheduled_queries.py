@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 from google.oauth2 import service_account
 import yaml
 
-load_dotenv()
+load_dotenv() #not sure if i need this
 service_account_info = json.loads(os.getenv('GCP_SA_KEY'))
 credentials = service_account.Credentials.from_service_account_info(service_account_info)
 
