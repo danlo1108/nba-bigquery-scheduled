@@ -17,7 +17,7 @@ SELECT
 FROM nba.player_boxscores as player_boxscores
 JOIN nba.game_summaries as game_summaries 
 ON player_boxscores.game_id = game_summaries.game_id
-WHERE game_summaries.season=2024
+WHERE 1=1 and game_summaries.season=2024
 GROUP BY 1,2,3,4
 HAVING 
     SUM(player_boxscores.fga) > 0 AND
