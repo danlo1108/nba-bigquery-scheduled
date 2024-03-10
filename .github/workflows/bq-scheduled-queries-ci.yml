@@ -23,8 +23,19 @@ jobs:
         service_account_key: ${{ secrets.GCP_SA_KEY }}
         export_default_credentials: true
 
+    - name: Set up Python environment
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'  # Specify the Python version you need
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install google-cloud-bigquery-datatransfer google-cloud-bigquery google-auth google-auth-httplib2 google-auth-oauthlib pyyaml python-dotenv
+
     - name: Deploy Scheduled Queries
       run: |
         python deploy_scheduled_queries.py
       env:
+        GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
         GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
